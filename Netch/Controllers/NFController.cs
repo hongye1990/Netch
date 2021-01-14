@@ -253,6 +253,10 @@ namespace Netch.Controllers
                 aio_dial((int) NameList.TYPE_TCPPASS + offset, string.Empty);
                 aio_dial((int) NameList.TYPE_TCPMETH + offset, string.Empty);
             }
+            if (!Global.Settings.ModifySystemDNS)
+            {
+                aio_dial((int)NameList.TYPE_REDIRCTOR_DNS, "8.8.8.8");
+            }
         }
 
         private void SetName(Mode mode)
@@ -310,7 +314,8 @@ namespace Netch.Controllers
             TYPE_UDPMETH,
             TYPE_ADDNAME,
             TYPE_BYPNAME,
-            TYPE_CLRNAME
+            TYPE_CLRNAME,
+            TYPE_REDIRCTOR_DNS
         }
 
         #endregion
